@@ -67,6 +67,8 @@ cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
     console.log("test running of " + tinyg.id);
     tinyg.init();
 
+    $('body').css("padding", "20px");
+    
     // create a typical test of planner buffer
     // you never want planner buffer with more than 12 items queued, 4 are reserved for pulling
     // from serial buffer, so you want qr to be no less than 12
