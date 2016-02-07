@@ -60,6 +60,8 @@
 
     <script type='text/javascript'>
     //<![CDATA[
+/* global requirejs cprequire cpdefine chilipeppr */
+
 // Test this element. This code is auto-removed by the chilipeppr.load()
 cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
     console.log("test running of " + tinyg.id);
@@ -554,7 +556,9 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 // HTML at the end of the TinyG widget (just below the footer in
                 // a hidden DIV).
                 var that = this;
-                chilipeppr.load("#com-chilipeppr-widget-tinyg-holderAreaForConfigWidget", 'http://fiddle.jshell.net/khauser/vc1vd3n5/show/light', function () {
+                chilipeppr.load(
+                    "#com-chilipeppr-widget-tinyg-holderAreaForConfigWidget", 
+                    'http://fiddle.jshell.net/khauser/vc1vd3n5/show/light', function () {
                     require(["inline:com-chilipeppr-widget-configtinyg"], function (configtinyg) {
 
                         // We get here after the widget is loaded and instantiated
