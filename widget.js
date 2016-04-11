@@ -209,7 +209,8 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 '/com-chilipeppr-interface-cnccontroller/axes': "This widget will normalize the TinyG status report of axis coordinates to send off to other widgets like the XYZ widget. The axes publish payload contains {x:float, y:float, z:float, a:float} If a different CNC controller is implemented, it should normalize the coordinate status reports like this model. The goal of this is to abstract away the specific controller implementation from generic CNC widgets.",
                 '/com-chilipeppr-interface-cnccontroller/units': "This widget will normalize the TinyG units to the interface object of units {units: \"mm\"} or {units: \"inch\"}. This signal will be published on load or when this widget detects a change in units so other widgets like the XYZ widget can display the units for the coordinates it is displaying.",
                 '/com-chilipeppr-interface-cnccontroller/coords': "This widget will broadcast out any change in the coordinate system. The value is {coord:\"g55\", coordNum: 55} or for G92 {coord:\"g92\", coordNum: 92} or for machine {coord:\"g53\", coordNum: 53}",
-                '/com-chilipeppr-interface-cnccontroller/firmware': "This widget will broadcast out a firmware build/version number when it sees it come in from the CNC controller to help other widgets pivot off of that data. The firmware build number is requested when the /onconnect is seen. Your widget must be loaded to see this signal as there is no request/recv signal implemented (please ask if you need one)."
+                '/com-chilipeppr-interface-cnccontroller/firmware': "This widget will broadcast out a firmware build/version number when it sees it come in from the CNC controller to help other widgets pivot off of that data. The firmware build number is requested when the /onconnect is seen. Your widget must be loaded to see this signal as there is no request/recv signal implemented (please ask if you need one).",
+                '/com-chilipeppr-interface-cnccontroller/status': "Status. This signal is published when machine change the status.",
         },
         subscribe: {
             '/com-chilipeppr-interface-cnccontroller/jogdone': 'We subscribe to a jogdone event so that we can fire off an exclamation point (!) to the TinyG to force it to drop all planner buffer items to stop the jog immediately.',
@@ -957,6 +958,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             if ("stat" in sr) {
                 var state = ["Initializing", "Ready", "Shutdown", "Stop", "End", "Run", "Hold", "Homing"];
                 e.state.text(state[sr.stat]);
+                chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/status", state[sr.stat]);
             }
             if ("momo" in sr) {
                 var motion = ["Traverse", "Straight", "CW Arc", "CCW Arc"];
