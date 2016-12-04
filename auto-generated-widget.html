@@ -923,6 +923,11 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                     console.log("FB is safe. fbver:", fbver);
                     $('#com-chilipeppr-widget-tinyg .fb-build').text(fb);
                     $('#com-chilipeppr-widget-tinyg .fb-alert').addClass("hidden");
+                } else if (fbver < 200) {
+                    // assume if we're down this low that it's v9
+                    $('#com-chilipeppr-widget-tinyg .fb-build').text("G2 " + fb.toFixed(2));
+                    $('#com-chilipeppr-widget-tinyg .fb-alert').addClass("hidden");
+                
                 } else {
                     // they are below threshold
                     $('#com-chilipeppr-widget-tinyg .fb-build').text(fb);
