@@ -497,9 +497,13 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 // HTML at the end of the TinyG widget (just below the footer in
                 // a hidden DIV).
                 var that = this;
+                // Old URL
+                // 'http://fiddle.jshell.net/khauser/vc1vd3n5/show/light'
+                // New Github URL
+                // "http://raw.githubusercontent.com/chilipeppr/widget-configtinyg/master/auto-generated-widget.html"
                 chilipeppr.load(
                     "#com-chilipeppr-widget-tinyg-holderAreaForConfigWidget", 
-                    'http://fiddle.jshell.net/khauser/vc1vd3n5/show/light', function () {
+                    "http://raw.githubusercontent.com/chilipeppr/widget-configtinyg/master/auto-generated-widget.html", function () {
                     require(["inline:com-chilipeppr-widget-configtinyg"], function (configtinyg) {
 
                         // We get here after the widget is loaded and instantiated
@@ -1217,7 +1221,9 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             });
 
             var that = this;
-            chilipeppr.load("http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", function () {
+            //"http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
+            // chilipeppr.load("http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", function () {
+            chilipeppr.load("http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html", function () {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function (pubsubviewer) {
                     pubsubviewer.attachTo($('#com-chilipeppr-widget-tinyg .panel-heading .dropdown-menu'), that);
                 });
